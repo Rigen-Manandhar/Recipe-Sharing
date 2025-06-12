@@ -1,0 +1,25 @@
+# node dependencies
+node_modules
+
+# production build
+build
+dist
+
+# test coverage
+coverage
+
+# misc
+.env
+.env.local
+.env.development
+.env.production
+
+# public static files
+public
+
+# log files
+*.log
+
+# system files
+.DS_Store
+Thumbs.db
