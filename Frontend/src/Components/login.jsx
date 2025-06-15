@@ -1,7 +1,29 @@
 import Logo from '../assets/logo.png';
 import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { toast } from 'react-toastify';
+import axios from 'axios';
 
 const Login = () => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const res = await axios.post('http://localhost:5000/api/auth/login', {
+        email,
+        password,
+      });
+
+      toast.success(res.data.message); // backend returns "Login Successful"
+      // You can also redirect user after login if you want
+    } catch (error) {
+      toast.error(error.response?.data?.message || 'Login failed. Try again.');
+    }
+  };
+
   return (
     <div className="flex h-screen">
       <div className="w-1/2 relative">
@@ -27,6 +49,8 @@ const Login = () => {
                 <label className="block text-lg font-medium mb-2">Email</label>
                 <input
                   type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   placeholder="Enter your email"
                   className="w-full border border-gray-300 rounded-md px-6 py-4 text-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
                 />
@@ -38,6 +62,8 @@ const Login = () => {
                 </label>
                 <input
                   type="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                   placeholder="Enter your password"
                   className="w-full border border-gray-300 rounded-md px-6 py-4 text-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
                 />
@@ -47,6 +73,7 @@ const Login = () => {
             <div className="mt-8">
               <button
                 type="submit"
+                onClick={handleSubmit}
                 className="bg-orange-500 text-white font-semibold py-4 text-xl w-full rounded-md hover:bg-orange-600 transition duration-300"
               >
                 Login
