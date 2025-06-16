@@ -39,7 +39,11 @@ const Signup = () => {
         {/* Left Side */}
         <div className="w-1/2 bg-white flex flex-col items-center py-8">
           <Link to="/">
-            <img className="w-48 h-48 mb-8" src={Logo} alt="Logo" />
+            <img
+              className="w-48 h-48 mb-8 transition-transform duration-500 hover:scale-105"
+              src={Logo}
+              alt="Logo"
+            />
           </Link>
 
           <div className="w-[55vh] h-[60vh] shadow-2xl p-10 rounded-lg flex flex-col justify-start">

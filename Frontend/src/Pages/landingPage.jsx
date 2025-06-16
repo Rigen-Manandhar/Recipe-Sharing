@@ -3,6 +3,7 @@ import Hero from '../Components/hero.jsx';
 import DailyRecipe from '../Components/dailyRecipe.jsx';
 import Featured from "../Components/featuredRecipie's.jsx";
 import SelectFew from '../Components/selectFew.jsx';
+import Footer from '../Components/footer.jsx';
 
 const Landing = () => {
   return (
@@ -12,7 +13,7 @@ const Landing = () => {
       <DailyRecipe />
       <Featured />
       <SelectFew />
-      
+      <Footer />
     </>
   );
 };

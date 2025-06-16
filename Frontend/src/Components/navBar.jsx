@@ -14,7 +14,7 @@ const NavBar = () => {
     <div className="fixed top-0 left-0 right-0 z-50 bg-white shadow-md">
       <div className="max-w-[1400px] mx-auto h-20 flex justify-between items-center px-6">
         <Link to="/">
-          <img className="w-14 h-14 object-contain" src={Logo} alt="Logo" />
+          <img className="w-22 h-22 object-contain" src={Logo} alt="Logo" />
         </Link>
 
         <div className="flex gap-10">

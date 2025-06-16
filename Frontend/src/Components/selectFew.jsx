@@ -23,13 +23,16 @@ const SelectFew = () => {
   ];
 
   return (
-    <div className="flex flex-wrap justify-center items-center gap-8 mt-[120px] mb-10 px-4">
+    <div className="flex flex-wrap justify-center items-center gap-8 mt-[120px] mb-50 px-4 ">
       {categories.map((item, index) => (
-        <div key={index} className="relative w-[320px] h-[500px]">
+        <div
+          key={index}
+          className="relative w-[320px] h-[500px] transition-transform duration-500 hover:scale-105 "
+        >
           <img
             src={item.image}
             alt={item.label}
-            className="cursor-pointer hover:brightness-75 transition duration-500 ease-in-out w-full h-full object-cover rounded-xl shadow-md"
+            className="cursor-pointer  w-full h-full object-cover rounded-xl shadow-md"
           />
           <button className="absolute -bottom-5 left-1/2 transform -translate-x-1/2 w-[150px] h-16 bg-orange-500 font-pacifico text-xl text-white rounded-lg shadow-lg hover:bg-white hover:text-orange-500 transition duration-300 ease-in-out">
             {item.label}

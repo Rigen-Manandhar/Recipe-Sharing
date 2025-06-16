@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { toast } from 'react-toastify';
 import axios from 'axios';
 
-const Login = () => {
+const Login = (props) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -17,8 +17,8 @@ const Login = () => {
         password,
       });
 
-      toast.success(res.data.message); // backend returns "Login Successful"
-      // You can also redirect user after login if you want
+      toast.success(res.data.message);
+      props.setIsLoggedIn(true);
     } catch (error) {
       toast.error(error.response?.data?.message || 'Login failed. Try again.');
     }
@@ -37,7 +37,11 @@ const Login = () => {
       {/* Left Side */}
       <div className="w-1/2 bg-white flex flex-col items-center py-8">
         <Link to="/">
-          <img className="w-48 h-48 mb-8" src={Logo} alt="Logo" />
+          <img
+            className="w-48 h-48 mb-8 transition-transform duration-500 hover:scale-105"
+            src={Logo}
+            alt="Logo"
+          />
         </Link>
 
         <div className="w-[55vh] h-[60vh] shadow-2xl p-10 rounded-lg flex flex-col justify-start">
