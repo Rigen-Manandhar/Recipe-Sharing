@@ -1,5 +1,5 @@
 import Logo from '../assets/logo.png';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import React, { useState } from 'react';
 import { toast } from 'react-toastify';
 import axios from 'axios';
@@ -7,6 +7,7 @@ import axios from 'axios';
 const Login = (props) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -19,6 +20,10 @@ const Login = (props) => {
 
       toast.success(res.data.message);
       props.setIsLoggedIn(true);
+      setTimeout(() => {
+        navigate('/');
+      }, 3000);
+      console.log(props.isLoggedIn);
     } catch (error) {
       toast.error(error.response?.data?.message || 'Login failed. Try again.');
     }
@@ -77,6 +82,7 @@ const Login = (props) => {
             <div className="mt-8">
               <button
                 type="submit"
+                value={props.isLoggedIn}
                 onClick={handleSubmit}
                 className="bg-orange-500 text-white font-semibold py-4 text-xl w-full rounded-md hover:bg-orange-600 transition duration-300"
               >

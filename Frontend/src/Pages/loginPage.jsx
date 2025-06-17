@@ -1,9 +1,6 @@
-import React, { useState } from 'react';
 import Login from '../Components/login.jsx';
 
-const LoginPage = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-
+const LoginPage = ({ isLoggedIn, setIsLoggedIn }) => {
   return (
     <>
       <Login isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />

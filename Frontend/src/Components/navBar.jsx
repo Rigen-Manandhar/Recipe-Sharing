@@ -1,7 +1,11 @@
 import Logo from '../assets/logo.png';
 import { Link } from 'react-router-dom';
 
-const NavBar = () => {
+const NavBar = ({ isLoggedIn, setIsLoggedIn }) => {
+  const handleLogout = () => {
+    setIsLoggedIn(false);
+  };
+
   const navItems = [
     { name: 'Home', link: '/home' },
     { name: 'Recipes', link: '/recipes' },
@@ -30,19 +34,30 @@ const NavBar = () => {
         </div>
 
         <div className="flex gap-4 items-center">
-          <Link
-            to="/login"
-            className="text-lg font-medium text-gray-700 hover:text-orange-500 transition duration-300"
-          >
-            Log In
-          </Link>
-          <span className="text-gray-400">|</span>
-          <Link
-            to="/signup"
-            className="text-lg font-medium text-white bg-orange-500 px-4 py-2 rounded-md hover:bg-orange-600 transition duration-300"
-          >
-            Sign Up
-          </Link>
+          {isLoggedIn ? (
+            <button
+              onClick={handleLogout}
+              className="text-lg font-medium text-white bg-red-500 px-4 py-2 rounded-md hover:bg-red-600 transition duration-300"
+            >
+              Logout
+            </button>
+          ) : (
+            <>
+              <Link
+                to="/login"
+                className="text-lg font-medium text-gray-700 hover:text-orange-500 transition duration-300"
+              >
+                Log In
+              </Link>
+              <span className="text-gray-400">|</span>
+              <Link
+                to="/signup"
+                className="text-lg font-medium text-white bg-orange-500 px-4 py-2 rounded-md hover:bg-orange-600 transition duration-300"
+              >
+                Sign Up
+              </Link>
+            </>
+          )}
         </div>
       </div>
     </div>
