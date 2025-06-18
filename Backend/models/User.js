@@ -8,7 +8,10 @@ const userSchema = new mongoose.Schema({
     minlength: 3,
     maxlength: 30,
   },
-
+  role:{
+    type:String,
+    default:"user"
+  },
   email: {
     type: String,
     required: true,
