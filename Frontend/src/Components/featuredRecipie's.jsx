@@ -11,7 +11,7 @@ const Featured = () => {
       createdBy: 'Jane Doe',
     },
     {
-      id: 1,
+      id: 2,
       image:
         'https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
       title: 'BBQ Ribs',
@@ -19,7 +19,7 @@ const Featured = () => {
       createdBy: 'Jane Doe',
     },
     {
-      id: 1,
+      id: 3,
       image:
         'https://images.unsplash.com/photo-1473093295043-cdd812d0e601?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
       title: 'Pasta',

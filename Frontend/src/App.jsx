@@ -4,6 +4,7 @@ import LandingPage from './Pages/landingPage.jsx';
 import SignupPage from './Pages/signupPage.jsx';
 import LoginPage from './Pages/loginPage.jsx';
 import ConfirmBox from './Components/confirmBox.jsx';
+import RecipePage from './Pages/recipePage.jsx';
 
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
           <Route path="signup" element={<SignupPage />} />
           <Route path="login" element={<LoginPage />} />
           <Route path="confirm" element={<ConfirmBox />} />
+          <Route path="recipe" element={<RecipePage />} />
         </Routes>
       </Router>
     </>

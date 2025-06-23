@@ -1,10 +1,9 @@
 import Logo from '../assets/logo.png';
 import { Link, useNavigate } from 'react-router-dom';
-import useAuth from '../context/useAuth';
+import useAuth from '../context/Auth/useAuth';
 import React, { useState } from 'react';
 import { toast } from 'react-toastify';
 import axios from 'axios';
-
 
 const Login = () => {
   const { isLoggedIn, setIsLoggedIn } = useAuth();

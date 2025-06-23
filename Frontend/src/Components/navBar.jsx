@@ -1,7 +1,7 @@
 import Logo from '../assets/logo.png';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import useAuth from '../context/useAuth';
+import useAuth from '../context/Auth/useAuth';
 import ConfirmBox from './confirmBox'; // Make sure this path is correct
 
 const NavBar = () => {
@@ -22,7 +22,7 @@ const NavBar = () => {
   };
 
   const navItems = [
-    { name: 'Home', link: '/home' },
+    { name: 'Home', link: '/' },
     { name: 'Recipes', link: '/recipes' },
     { name: 'Categories', link: '/category' },
     { name: 'Submit Recipes', link: '/submitRecipe' },
@@ -31,7 +31,7 @@ const NavBar = () => {
 
   return (
     <>
-      <div className="fixed top-0 left-0 right-0 z-50 bg-white shadow-md">
+      <div className="fixed top-0 left-0 right-0 z-50 bg-white shadow-md ">
         <div className="max-w-[1400px] mx-auto h-20 flex justify-between items-center px-6">
           <Link to="/">
             <img className="w-22 h-22 object-contain" src={Logo} alt="Logo" />
@@ -74,6 +74,10 @@ const NavBar = () => {
                 </Link>
               </>
             )}
+
+            <div>
+              <p>Theme: </p>
+            </div>
           </div>
         </div>
       </div>

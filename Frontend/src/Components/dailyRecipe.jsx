@@ -1,4 +1,5 @@
 import RecipeCard from './recipeCard'; // Make sure path is correct
+import { Link } from 'react-router-dom';
 
 const DailyRecipe = () => {
   const recipes = [
@@ -37,13 +38,14 @@ const DailyRecipe = () => {
       <div className="relative mx-auto max-w-7xl flex justify-center items-center">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
           {recipes.map((recipe) => (
-            <RecipeCard
-              key={recipe.id}
-              image={recipe.image}
-              title={recipe.title}
-              description={recipe.description}
-              createdBy={recipe.createdBy}
-            />
+            <Link to="/recipe" key={recipe.id}>
+              <RecipeCard
+                image={recipe.image}
+                title={recipe.title}
+                description={recipe.description}
+                createdBy={recipe.createdBy}
+              />
+            </Link>
           ))}
         </div>
 

@@ -32,6 +32,7 @@ const SelectFew = () => {
           <img
             src={item.image}
             alt={item.label}
+            key={item.label}
             className="cursor-pointer  w-full h-full object-cover rounded-xl shadow-md"
           />
           <button className="absolute -bottom-5 left-1/2 transform -translate-x-1/2 w-[150px] h-16 bg-orange-500 font-pacifico text-xl text-white rounded-lg shadow-lg hover:bg-white hover:text-orange-500 transition duration-300 ease-in-out">

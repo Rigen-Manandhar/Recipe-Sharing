@@ -4,8 +4,10 @@ import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'; // import CSS for toastify
 import Logo from '../assets/logo.png';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const Signup = () => {
+  const navigate = useNavigate();
   const [fullName, setFullName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -28,6 +30,9 @@ const Signup = () => {
       setFullName('');
       setEmail('');
       setPassword('');
+      setTimeout(() => {
+        navigate('/login');
+      }, 3000);
     } catch (error) {
       toast.error(error.response?.data?.message || 'Signup failed. Try again.');
     }
