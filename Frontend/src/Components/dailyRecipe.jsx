@@ -1,7 +1,10 @@
 import RecipeCard from './recipeCard'; // Make sure path is correct
 import { Link } from 'react-router-dom';
+import { useTheme } from '../context/Theme/useTheme';
 
 const DailyRecipe = () => {
+  const { theme } = useTheme();
+
   const recipes = [
     {
       id: 1,
@@ -31,7 +34,9 @@ const DailyRecipe = () => {
 
   return (
     <div className="flex flex-col p-5 mt-10">
-      <h1 className="text-3xl sm:text-4xl md:text-5xl font-sans font-bold mb-10 text-center">
+      <h1
+        className={`text-3xl sm:text-4xl md:text-5xl font-sans font-bold mb-10 text-center ${theme === 'dark' ? 'text-white' : 'text-black'}`}
+      >
         Daily Recipe's
       </h1>
 

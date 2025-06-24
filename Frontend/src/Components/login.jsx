@@ -20,12 +20,18 @@ const Login = () => {
         password,
       });
 
-      toast.success(res.data.message);
       setIsLoggedIn(true);
-      setTimeout(() => {
-        navigate('/');
-      }, 3000);
-      console.log(isLoggedIn);
+
+      const token = res.data.token;
+
+      if (token) {
+        localStorage.setItem('token', token);
+        toast.success('login successfull');
+
+        setTimeout(() => {
+          navigate('/');
+        }, 3000);
+      }
     } catch (error) {
       toast.error(error.response?.data?.message || 'Login failed. Try again.');
     }
@@ -51,10 +57,13 @@ const Login = () => {
           />
         </Link>
 
-        <div className="w-[55vh] h-[60vh] shadow-2xl p-10 rounded-lg flex flex-col justify-start">
+        <div className="w-[55vh] h-[65vh] shadow-2xl p-10 rounded-lg flex flex-col justify-start">
           <h1 className="text-5xl mb-10 text-center font-pacifico">Login</h1>
 
-          <form className="flex flex-col justify-between flex-grow">
+          <form
+            className="flex flex-col justify-between flex-grow"
+            onSubmit={handleSubmit}
+          >
             <div className="flex flex-col space-y-6 mt-15">
               <div>
                 <label className="block text-lg font-medium mb-2">Email</label>
@@ -85,7 +94,6 @@ const Login = () => {
               <button
                 type="submit"
                 value={isLoggedIn}
-                onClick={handleSubmit}
                 className="bg-orange-500 text-white font-semibold py-4 text-xl w-full rounded-md hover:bg-orange-600 transition duration-300"
               >
                 Login

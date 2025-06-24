@@ -25,14 +25,28 @@ const Signup = () => {
         }
       );
 
-      toast.success(response.data.message); // show success toast
       // Optionally reset form
       setFullName('');
       setEmail('');
       setPassword('');
-      setTimeout(() => {
-        navigate('/login');
-      }, 3000);
+
+      const token = response.data.token;
+
+      if (token) {
+        localStorage.setItem('token', token);
+        toast.success('Signup successful');
+
+        setTimeout(() => {
+          navigate('/login');
+        }, 3000);
+      } else {
+        toast.error(
+          'Signup completed but no token was created, login manually'
+        );
+        setTimeout(() => {
+          navigate('/login');
+        }, 3000);
+      }
     } catch (error) {
       toast.error(error.response?.data?.message || 'Signup failed. Try again.');
     }
@@ -51,7 +65,7 @@ const Signup = () => {
             />
           </Link>
 
-          <div className="w-[55vh] h-[60vh] shadow-2xl p-10 rounded-lg flex flex-col justify-start">
+          <div className="w-[55vh] h-[70vh] shadow-2xl p-10 rounded-lg flex flex-col justify-start">
             <h1 className="text-5xl mb-10 text-center font-pacifico">Signup</h1>
 
             <form

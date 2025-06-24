@@ -2,10 +2,12 @@ import Logo from '../assets/logo.png';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import useAuth from '../context/Auth/useAuth';
-import ConfirmBox from './confirmBox'; // Make sure this path is correct
+import { useTheme } from '../context/Theme/useTheme';
+import ConfirmBox from './confirmBox';
 
 const NavBar = () => {
   const { isLoggedIn, setIsLoggedIn } = useAuth();
+  const { theme, setTheme } = useTheme();
   const [confirmBox, setConfirmBox] = useState(false);
 
   const handleLogoutClick = () => {
@@ -13,12 +15,17 @@ const NavBar = () => {
   };
 
   const handleConfirmLogout = () => {
+    localStorage.removeItem('token');
     setIsLoggedIn(false); // Actually logout user
     setConfirmBox(false); // Close the confirmation modal
   };
 
   const handleCancelLogout = () => {
     setConfirmBox(false); // Close modal without logging out
+  };
+
+  const handleThemeChange = () => {
+    setTheme((prev) => (prev === 'light' ? 'dark' : 'light'));
   };
 
   const navItems = [
@@ -31,7 +38,9 @@ const NavBar = () => {
 
   return (
     <>
-      <div className="fixed top-0 left-0 right-0 z-50 bg-white shadow-md ">
+      <div
+        className={`fixed top-0 left-0 right-0 z-50 shadow-md ${theme === 'dark' ? 'bg-gray-800' : 'bg-white'}`}
+      >
         <div className="max-w-[1400px] mx-auto h-20 flex justify-between items-center px-6">
           <Link to="/">
             <img className="w-22 h-22 object-contain" src={Logo} alt="Logo" />
@@ -42,7 +51,7 @@ const NavBar = () => {
               <Link
                 key={item.name}
                 to={item.link}
-                className="text-lg font-medium text-black hover:text-orange-500 transition duration-300"
+                className={`text-lg font-medium hover:text-orange-500 transition duration-300 ${theme === 'dark' ? 'text-white' : 'text-black'}`}
               >
                 {item.name}
               </Link>
@@ -61,7 +70,11 @@ const NavBar = () => {
               <>
                 <Link
                   to="/login"
-                  className="text-lg font-medium text-gray-700 hover:text-orange-500 transition duration-300"
+                  className={
+                    theme === 'dark'
+                      ? 'text-lg font-medium text-white hover:text-orange-500 transition duration-300'
+                      : 'text-lg font-medium text-gray-700 hover:text-orange-500 transition duration-300'
+                  }
                 >
                   Log In
                 </Link>
@@ -75,8 +88,17 @@ const NavBar = () => {
               </>
             )}
 
-            <div>
-              <p>Theme: </p>
+            <div className="flex justify-center items-center gap-2">
+              <p className={theme === 'dark' ? 'text-white' : 'text-black'}>
+                Theme:{' '}
+              </p>
+              <button
+                value={setTheme}
+                onClick={handleThemeChange}
+                className=" p-2 font-sans w-16 bg-amber-50 shadow-md hover:bg-black hover:text-white rounded-md cursor-pointer transition duration-300 ease-in-out"
+              >
+                {theme}
+              </button>
             </div>
           </div>
         </div>

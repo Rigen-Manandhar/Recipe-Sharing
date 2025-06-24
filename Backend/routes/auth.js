@@ -1,7 +1,10 @@
 import express from "express";
 import User from "../models/User.js";
+import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
 
 const router = express.Router();
+const JWT_SECRET = "your_secret_key";
 
 //Signup Route
 router.post("/signup", async (req, res) => {
@@ -13,9 +16,13 @@ router.post("/signup", async (req, res) => {
     if (userExits) {
       return res.status(400).json({ message: "User already exists" });
     }
-    const newUser = new User({ username, email, password });
+    const hashedPassword = await bcrypt.hash(password, 10);
+    const newUser = new User({ username, email, password: hashedPassword });
     await newUser.save();
-    res.status(201).json({ message: "User Created Succesfully", newUser });
+    const token = jwt.sign({ userID: newUser._id }, JWT_SECRET, {
+      expiresIn: "1h",
+    });
+    res.status(201).json({ message: "User Created Succesfully", token });
   } catch (err) {
     res.status(400).json({ message: "Error creating the User" });
   }
@@ -32,11 +39,16 @@ router.post("/login", async (req, res) => {
       return res.status(400).json({ message: "User not found" });
     }
 
-    if (user.password !== password) {
-      return res.status(400).json({ message: "Invalid Password" });
-    }
+    const isMatch = await bcrypt.compare(password, user.password);
 
-    res.status(200).json({ message: "Login Succesfull" });
+    if (!isMatch) {
+      return res.status(400).json({ message: "Incorrect Password" });
+    }
+    const token = jwt.sign({ userId: user._id }, JWT_SECRET, {
+      expiresIn: "1h",
+    });
+
+    res.status(200).json({ message: "Login Succesfull", token });
   } catch {
     res.status(500).json({ message: "Server Error" });
   }
