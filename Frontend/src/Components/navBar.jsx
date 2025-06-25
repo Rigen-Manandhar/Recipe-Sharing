@@ -1,4 +1,5 @@
 import Logo from '../assets/logo.png';
+import Clogo from '../assets/colored-logo.png';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import useAuth from '../context/Auth/useAuth';
@@ -40,7 +41,11 @@ const NavBar = () => {
       >
         <div className="max-w-[1400px] mx-auto h-20 flex justify-between items-center px-6">
           <Link to="/">
-            <img className="w-22 h-22 object-contain" src={Logo} alt="Logo" />
+            <img
+              className="w-22 h-22 object-contain"
+              src={theme === 'dark' ? Clogo : Logo}
+              alt="Logo"
+            />
           </Link>
 
           <div className="flex gap-10">

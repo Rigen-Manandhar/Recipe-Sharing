@@ -1,4 +1,4 @@
-import Logo from '../assets/logo.png';
+import Clogo from '../assets/colored-logo.png';
 import { FaFacebookF, FaTwitter, FaInstagram } from 'react-icons/fa';
 
 const Footer = () => {
@@ -24,7 +24,7 @@ const Footer = () => {
         {/* Center Column: Branding */}
         <div className="flex flex-col items-center space-y-6">
           <h1 className="text-5xl font-pacifico">Tastemate</h1>
-          <img src={Logo} alt="logo" className="object-contain w-32 h-32" />
+          <img src={Clogo} alt="logo" className="object-contain w-32 h-32" />
           <div className="text-sm">© 2025 Tastemate. All rights reserved.</div>
         </div>
 
@@ -32,7 +32,7 @@ const Footer = () => {
         <div className="flex flex-col items-center md:items-end space-y-4">
           <h2 className="text-2xl font-semibold">Quick Links</h2>
           <div className="flex flex-col space-y-2 text-lg">
-            <a href="#" className="hover:underline">
+            <a href="/" className="hover:underline">
               Home
             </a>
             <a href="#" className="hover:underline">
