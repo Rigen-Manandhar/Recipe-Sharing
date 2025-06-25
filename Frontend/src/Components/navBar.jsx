@@ -4,10 +4,11 @@ import { Link } from 'react-router-dom';
 import useAuth from '../context/Auth/useAuth';
 import { useTheme } from '../context/Theme/useTheme';
 import ConfirmBox from './confirmBox';
+import ToggleSwitch from './toggleSwitch';
 
 const NavBar = () => {
   const { isLoggedIn, setIsLoggedIn } = useAuth();
-  const { theme, setTheme } = useTheme();
+  const { theme } = useTheme();
   const [confirmBox, setConfirmBox] = useState(false);
 
   const handleLogoutClick = () => {
@@ -22,10 +23,6 @@ const NavBar = () => {
 
   const handleCancelLogout = () => {
     setConfirmBox(false); // Close modal without logging out
-  };
-
-  const handleThemeChange = () => {
-    setTheme((prev) => (prev === 'light' ? 'dark' : 'light'));
   };
 
   const navItems = [
@@ -90,15 +87,11 @@ const NavBar = () => {
 
             <div className="flex justify-center items-center gap-2">
               <p className={theme === 'dark' ? 'text-white' : 'text-black'}>
-                Theme:{' '}
+                {theme}:{' '}
               </p>
-              <button
-                value={setTheme}
-                onClick={handleThemeChange}
-                className=" p-2 font-sans w-16 bg-amber-50 shadow-md hover:bg-black hover:text-white rounded-md cursor-pointer transition duration-300 ease-in-out"
-              >
-                {theme}
-              </button>
+              <div>
+                <ToggleSwitch />
+              </div>
             </div>
           </div>
         </div>
