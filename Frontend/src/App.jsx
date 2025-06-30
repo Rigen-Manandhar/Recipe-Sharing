@@ -5,6 +5,7 @@ import SignupPage from './Pages/signupPage.jsx';
 import LoginPage from './Pages/loginPage.jsx';
 import ConfirmBox from './Components/confirmBox.jsx';
 import RecipePage from './Pages/recipePage.jsx';
+import SubmitRecipe from './Pages/submitRecipePage.jsx';
 
 const App = () => {
   return (
@@ -17,6 +18,7 @@ const App = () => {
           <Route path="login" element={<LoginPage />} />
           <Route path="confirm" element={<ConfirmBox />} />
           <Route path="recipe" element={<RecipePage />} />
+          <Route path="submitRecipe" element={<SubmitRecipe />} />
         </Routes>
       </Router>
     </>

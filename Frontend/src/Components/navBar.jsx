@@ -42,7 +42,7 @@ const NavBar = () => {
         <div className="max-w-[1400px] mx-auto h-20 flex justify-between items-center px-6">
           <Link to="/">
             <img
-              className="w-22 h-22 object-contain"
+              className="w-22 h-22 object-contain transition duration-500 transform hover:scale-105 ease-in-out"
               src={theme === 'dark' ? Clogo : Logo}
               alt="Logo"
             />

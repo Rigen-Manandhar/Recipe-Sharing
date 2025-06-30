@@ -3,8 +3,7 @@ import { useTheme } from '../context/Theme/useTheme';
 const RecipeCard = ({ image, title, description, createdBy }) => {
   const { theme } = useTheme();
 
-  const imageClass =
-    'w-full h-40 sm:h-48 md:h-56 lg:h-64 rounded-xl object-cover ';
+  const imageClass = 'w-full h-40 sm:h-48 md:h-56 lg:h-64  object-cover ';
   return (
     <>
       <div

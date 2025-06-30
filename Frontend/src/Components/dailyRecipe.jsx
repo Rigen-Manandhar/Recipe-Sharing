@@ -35,7 +35,7 @@ const DailyRecipe = () => {
   return (
     <div className="flex flex-col p-5 mt-10">
       <h1
-        className={`text-3xl sm:text-4xl md:text-5xl font-sans font-bold mb-10 text-center ${theme === 'dark' ? 'text-white' : 'text-black'}`}
+        className={`text-3xl sm:text-4xl md:text-5xl font-pacifico font-bold mb-10 text-center ${theme === 'dark' ? 'text-white' : 'text-black'}`}
       >
         Daily Recipe's
       </h1>

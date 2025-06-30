@@ -7,7 +7,7 @@ const Hero = () => {
         alt="Hero Image"
       />
 
-      <h1 className="absolute text-orange-500 text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl text-shadow-lg font-pacifico top-1/3">
+      <h1 className="absolute text-orange-500 text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl text-shadow-lg font-pacifico top-1/3 cursor-pointer transition duration-500 transform hover:scale-150  ease-in-out">
         Cook.Share.Inspire
       </h1>
 
