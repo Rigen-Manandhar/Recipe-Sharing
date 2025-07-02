@@ -5,9 +5,11 @@ import Featured from "../Components/featuredRecipie's.jsx";
 import SelectFew from '../Components/selectFew.jsx';
 import Footer from '../Components/footer.jsx';
 import { useTheme } from '../context/Theme/useTheme.js';
+import { useScrollToTop } from '../Hooks/useScrollToTop.js';
 
 const Landing = () => {
   const { theme } = useTheme();
+  useScrollToTop();
   return (
     <div className={theme === 'dark' ? ' bg-gray-800' : 'bg:white'}>
       <NavBar />

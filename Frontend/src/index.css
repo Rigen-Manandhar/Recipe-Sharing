@@ -1,9 +1,9 @@
+@import 'tailwindcss';
+
 @font-face {
   font-family: pacifico;
   src: url('./fonts/Pacifico-Regular.ttf');
 }
-
-@import 'tailwindcss';
 
 @theme {
   --font-pacifico: pacifico, 'sans-serif';
