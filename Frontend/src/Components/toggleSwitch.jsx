@@ -1,10 +1,30 @@
 import { useTheme } from '../context/Theme/useTheme';
+import { useEffect } from 'react';
 
 const ToggleSwitch = () => {
   const { theme, setTheme } = useTheme();
 
+  useEffect(() => {
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    setTheme(savedTheme);
+
+    if (savedTheme === 'dark') {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  }, [setTheme]);
+
   const onToggle = () => {
-    setTheme((prev) => (prev === 'light' ? 'dark' : 'light'));
+    const newTheme = theme === 'light' ? 'dark' : 'light';
+    setTheme(newTheme);
+    localStorage.setItem('theme', newTheme);
+
+    if (newTheme === 'dark') {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
   };
 
   const isDark = theme === 'dark';
